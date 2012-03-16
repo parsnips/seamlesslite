@@ -1,0 +1,31 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+<div class='container'>
+
+<div class='top_bar'>
+
+<div class='title'><a href="/">SeamlessLite</a></div>
+
+<div class='quick_bar'> {{ user.email }} {% if user.is_authenticated %}|  <a class='link' href='/logout'>Logout</a>{% endif %}
+</div>
+</div>
+
+<div class='main'>
+
+{% block main %}
+
+{% endblock %}
+
+</div>
+
+<div class='footer' align='center'>
+Parsnips.net 2009
+</div>
+
+
+</div>
+
+
+{% endblock %}

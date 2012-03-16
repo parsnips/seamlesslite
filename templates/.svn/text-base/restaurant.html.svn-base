@@ -1,0 +1,102 @@
+{% extends "main.html" %}
+
+{% block main %}
+
+
+
+<div class="sidebar" style="visibility:hidden;" id="order_summary">
+	<div class="window_title">Order Summary</div>
+	<div class="window_body" id="order_summary_details"></div>
+</div>
+
+<script>
+window.addEvent('domready', function() {
+	populateOrderSummary();
+});
+
+function populateOrderSummary() {
+	{% if order_id %}
+	$('order_summary_details').innerHTML = "";
+	var uri = "http://lite.parsnips.net/order/{{ order_id }}/";
+	var jsonRequest = new Request.JSON({url: uri, onSuccess: function(order_summary){
+    	var list = new Element('table', {id : 'order_summary_table'});
+    	var row = new Element('tr');
+    	var label = new Element('td');
+    	var grandTotal = new Element('td');
+    	
+    	label.innerHTML = "Grand Total:";
+    	grandTotal.innerHTML = order_summary.GrandTotal;
+    	row.adopt(label);
+    	row.adopt(grandTotal);
+    	list.adopt(row);
+    	
+    	row = new Element('tr');
+    	label = new Element('td');
+    	tax = new Element('td');
+    	label.innerHTML = "Tax:";
+    	tax.innerHTML = order_summary.Tax;
+    	row.adopt(label);
+    	row.adopt(tax);
+    	list.adopt(row);
+    	
+    	row = new Element('tr');
+    	label = new Element('td');
+    	tip = new Element('td');
+    	label.innerHTML = "Tip:";
+    	tip.innerHTML = order_summary.Tip;
+    	row.adopt(label);
+    	row.adopt(tip);
+    	list.adopt(row);
+    	
+    	row = new Element('tr');
+    	label = new Element('td');
+    	label.innerHTML = "Line Items:";
+    	row.adopt(label);
+    	list.adopt(row);
+    	
+    	for (var i=0; i<order_summary.LineItems.length; i++) {
+    		row = new Element('tr');
+    		var quantity = new Element('td');
+    		var name = new Element('td');
+    		var price = new Element('td');
+    		
+    		
+    		quantity.innerHTML = order_summary.LineItems[i].Quantity;
+    		name.innerHTML = order_summary.LineItems[i].Name;
+    		price.innerHTML = order_summary.LineItems[i].Price;
+    		
+    		
+    		row.adopt(quantity);
+    		row.adopt(name);
+    		row.adopt(price);
+    		list.adopt(row);    		
+    	}
+    	
+    	$('order_summary_details').adopt(list);
+    	$('order_summary').style.visibility = 'visible';
+    	
+
+	}}).get();
+	{% endif %}
+}
+
+</script>
+
+
+{% for category in menu.categories %}
+<div class="window">
+
+    <div class="window_title">
+		{{ category.name }}    	
+    </div>
+
+    <div class="window_body">
+    	<table>
+    	{% for item in category.items %}
+    		<tr><td><a href="/restaurant/{{ vendor_location_id }}/menu/item/{{ item.item_id }}/{{ item.category_id }}/">{{ item.name }}</a></td><td>${{ item.price }}</tr>
+    	{% endfor %}
+    	</table>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}

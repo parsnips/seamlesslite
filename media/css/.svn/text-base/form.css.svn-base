@@ -1,0 +1,11 @@
+/**** Form styles ****/
+
+input {
+	background: white;
+	border: 1px solid #cccccc;
+}
+
+input.submit {
+	background: #d7f2f9;
+}
+

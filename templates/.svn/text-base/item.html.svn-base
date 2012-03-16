@@ -1,0 +1,35 @@
+{% extends "main.html" %}
+
+{% block main %}
+
+<h1>{{ item.name }}  ${{ item.price }}</h1>
+<form name="add_item_form" action="/add_item/" method="post">
+<input type="hidden" name="vendor_location_id" value="{{ vendor_location_id }}" />
+<input type="hidden" name="item_id" value="{{ item.item_id }}" />
+<input type="hidden" name="category_id" value="{{ item.category_id }}" />
+<label for="quantity">Quantity:</label>
+<input type="textbox" name="quantity" id="quantity" size="4" maxlength="4"/>
+<input type="submit" value="Add To Order!" id="add_to_order"/>
+
+{% for option_group in option_groups %}
+<div class="window">
+
+    <div class="window_title">
+		{{ option_group.name }}    	
+    </div>
+
+    <div class="window_body" id="option_group{{ option_group.option_group_id }}">
+		{% for option in option_group.options %}
+		<label for="option_{{ option.option_id }}">{{ option.name }} ${{ option.price }}</label>
+		{% ifequal option_group.maximum_selections 1 %}
+   		<input name="selected_option_group_{{ option_group.option_group_id }}" id="option_{{ option.option_id }}" type="radio" value="{{ option.option_id }}"/><br />
+   		{% else %}
+   		<input name="selected_option_group_{{ option_group.option_group_id }}" id="option_{{ option.option_id }}" type="checkbox" value="{{ option.option_id }}"/><br />
+		{% endifequal %}
+		{% endfor %}
+    </div>
+</div>
+{% endfor %}
+
+</form>
+{% endblock %}

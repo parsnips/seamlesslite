@@ -1,0 +1,51 @@
+{% extends "main.html" %}
+
+{% block main %}
+
+<div class='window'>
+
+<div class='window_title'>
+Send invitations
+</div>
+
+<div class='window_body'>
+
+{% if sent %}
+
+Successfully sent invitations for the following users:
+<ul>
+ {% for user in success %}
+  <li>{{ user }}</li>
+ {% endfor %}
+</ul>
+
+ {% if failure %}
+ Sending of invitations failed for the following users:
+ <ul>
+  {% for user in failure %}
+   <li>{{ user }}</li>
+  {% endfor %}
+ </ul>
+ {% endif %}
+
+{% else %}
+
+<form name='invitation' method='post' action=''>
+
+{% for user in users %}
+ <label>{{ user }}</label><input type='checkbox' name='{{user.id}}' /><br />
+{% endfor %}
+
+<div align='right' >
+<input class='submit' type='button' value='Send invitations' onclick='document.invitation.submit();' />
+</div>
+
+{% endif %}
+
+</form>
+<a href='/admin'>Back to Admin</a>
+</div> <!-- window body -->
+
+</div> <!-- window -->
+
+{% endblock %}

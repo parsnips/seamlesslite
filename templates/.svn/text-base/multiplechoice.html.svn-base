@@ -1,0 +1,5 @@
+<select name='question_{{question.id}}'>
+{% for choice in question.get_choices %}
+  <option value='{{choice.nr}}'>{{choice.name}}</option>
+{% endfor %}
+</select>

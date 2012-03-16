@@ -1,0 +1,10 @@
+<table border='0'>
+<tr>
+{% for choice in question.get_choices %}
+<td>
+<input name='question_multiple_{{choice.nr}}_{{question.id}}' type='checkbox'
+value='{{choice.nr}}'><label>{{choice.name}}</label>
+</td>
+{% endfor %}
+</tr>
+</table>

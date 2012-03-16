@@ -1,0 +1,134 @@
+body {
+	background: #EEEEEE;
+	font-family: Arial, Helvetica;
+	font-size: 12pt;
+}
+
+.top_bar {
+	width: 100%;
+	background: #f38630;
+	padding: 5px 0px 5px 0px;
+	height: 30px;
+}
+
+.title a {
+	color: white;
+	font-size: 18pt;
+	padding: 0;
+	margin: 0;
+	margin-left: 1em;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+a.link {
+	color: black;
+	font-size: 11pt;
+	text-decoration: underline;
+}	
+
+.quick_bar {
+	position: absolute;
+	color: white;
+	margin-right: 1em;
+	padding: 20px 0px 0px 0px ;
+	top: 0;
+	right: 0;
+	text-align: right;
+	font-size: 11pt;
+}
+
+.quick_bar a {
+	color: white;
+}
+
+.container {
+	background: white;
+	border: 1px solid #cccccc;
+	width: 100%;
+}
+
+table.question_table {
+	padding-top: 5px;
+	padding-bottom: 5px;
+	border: 1px solid #cccccc;
+	background: #eeeeee;
+}
+
+table {
+        padding-top: 5px;
+	padding-bottom: 5px;
+	border: 1px solid #cccccc;
+	background: #eeeeee;
+         }
+
+table td {
+        border-bottom: 1px solid #333;
+        padding: 2px 5px;
+        text-overflow:ellipsis;
+        overflow:hidden;
+        white-space:nowrap;
+ }
+ 
+.sidebar {
+    float: right;
+    width: 25%;
+    margin-top: 1em;
+	margin-left: 1em;
+	margin-right: 1em;
+	border: 1px solid #cccccc;
+}
+
+.window {
+	width: 66%;
+	margin-top: 1em;
+	margin-left: 1em;
+	margin-right: 1em;
+	border: 1px solid #cccccc;
+}
+
+.window_title {
+	padding-left: 5px;
+	font-weight: bold;
+	font-size: 14px;
+	background: #d7f2f9;
+}
+
+.window_body {
+	padding: 5px;
+}
+a.button {
+	color: black;
+	width: 30%;
+	background: #d7f2f9;
+	padding: 4px;
+	margin: 4px;
+	border: 1px solid #ccc;
+	text-decoration: none;
+}
+
+/**** Path / Breadcrumbs ****/
+
+.path {
+	padding: 4px;
+}
+
+/**** Questionnaire stuff ****/
+
+.sub_question {
+	width: 100%;
+}
+
+.first_question {
+	width: 200px;
+	top: 10px;
+	left: 400px;
+}
+
+/**** Footer ****/
+
+.footer {
+	color: #cccccc;
+	margin-top: 1em;
+	font-size: smaller;
+}

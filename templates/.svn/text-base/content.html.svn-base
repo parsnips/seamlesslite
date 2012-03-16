@@ -1,0 +1,15 @@
+{% extends "main.html" %}
+
+{% block main %}
+<div class="window">
+
+    <div class="window_title">
+		<a href="/{{content.cleanpath}}">{{content.title}}</a>
+    </div>
+
+    <div class="window_body">
+        {{content.content|safe}}
+    </div>
+
+</div>
+{% endblock %}
